@@ -8,11 +8,9 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
-@TeleOp (name = "Robot")
+@TeleOp (name = "Spaghetti")
 public class RobotCode extends OpMode {
 
-
-    //Testtestesttstetgdjvhldsagjhf
 
 
     RobotHardware hardware;
