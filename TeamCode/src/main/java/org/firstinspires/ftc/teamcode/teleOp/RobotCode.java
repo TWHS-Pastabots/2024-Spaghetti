@@ -116,14 +116,44 @@ public class RobotCode extends OpMode {
 
     public void intake(){
         //intake will go here
+        if(gamepad2.left_trigger > 0.0){
+            hardware.intake.setPower(1.0);
+
+
+        }
+        else
+        {
+            hardware.intake.setPower(0.0);
+        }
     }
 
     public void launch(){
         //the things you need to do for launch will go here
+        if(gamepad2.right_trigger > 0.0)
+        {
+            hardware.launcher.setPower(1.0);
+        }
+        else
+        {
+            hardware.launcher.setPower(0.0);
+        }
 
     }
 
     public void lift(){
        //climber code will go here
+        if(gamepad2.square && buttonTime.time() >= 500)
+        {
+            hardware.climber.setPower(0.4);
+        }
+        else
+            hardware.climber.setPower(0.0);
+    }
+
+    public void angleShooter()
+    {
+        if(gamepad2.right_bumper){
+            //angler.angleshooter
+        }
     }
 }

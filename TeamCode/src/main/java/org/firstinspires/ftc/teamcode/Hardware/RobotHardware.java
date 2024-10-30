@@ -13,6 +13,13 @@ public class RobotHardware {
     public DcMotorEx rearLeft = null;
     public DcMotorEx frontRight = null;
     public DcMotorEx rearRight = null;
+    public DcMotorEx intake = null;
+    public DcMotorEx launcher = null;
+    public DcMotorEx climber = null;
+    public Servo transition = null;
+    public Servo angler = null;
+
+
 
     public DcMotorEx[] motors;
 
@@ -23,6 +30,7 @@ public class RobotHardware {
         initializeDriveMotors(hardwareMap);
         initializeIntakeMotors(hardwareMap);
         initializeOutTakeMotors(hardwareMap);
+        initializeClimbMotor(hardwareMap);
         initializeServos(hardwareMap);
     }
 
@@ -32,6 +40,7 @@ public void initializeDriveMotors(HardwareMap hardwareMap){
     frontRight = hardwareMap.get(DcMotorEx.class, RobotIDS.RIGHT_FRONT_MOTOR);
     rearLeft = hardwareMap.get(DcMotorEx.class, RobotIDS.LEFT_REAR_MOTOR);
     rearRight = hardwareMap.get(DcMotorEx.class, RobotIDS.RIGHT_REAR_MOTOR);
+    climber = hardwareMap.get(DcMotorEx.class, RobotIDS.CLIMBER_MOTOR);
 
 
     //this is the list of the motors you will use for the drivetrain
@@ -53,13 +62,36 @@ public void initializeDriveMotors(HardwareMap hardwareMap){
 
 public void initializeIntakeMotors(HardwareMap hardwareMap){
     //this will be where your intake code goes eventually
+    intake.setDirection(DcMotorSimple.Direction.REVERSE);
+    intake = hardwareMap.get(DcMotorEx.class, RobotIDS.INTAKE_MOTOR);
+    intake.setPower(0.0);
+    intake.setZeroPowerBehavior(DcMotorEx.ZeroPowerBehavior.BRAKE);
+    //intake.setMode(DcMotorEx.RunMode.RUN_WITHOUT_ENCODER);
+
 }
 
 public void initializeOutTakeMotors(HardwareMap hardwareMap){
         //this is where your shooter code will go eventually
+    launcher = hardwareMap.get(DcMotorEx.class, RobotIDS.LAUNCH_MOTOR);
+    launcher.setPower(0.0);
+    launcher.setZeroPowerBehavior(DcMotorEx.ZeroPowerBehavior.BRAKE);
 }
+    public void initializeClimbMotor(HardwareMap hardwareMap){
+        //this is where your shooter code will go eventually
+        climber = hardwareMap.get(DcMotorEx.class, RobotIDS.CLIMBER_MOTOR);
+        climber.setPower(0.0);
+        climber.setZeroPowerBehavior(DcMotorEx.ZeroPowerBehavior.BRAKE);
 
-public void initializeServos(HardwareMap hardwareMap){
-    //this is where all of your servos will go eventually
+//public void initializeServos(HardwareMap hardwareMap){
+            //this is where all of your servos will go eventually
+           // transition = hardwareMap.get(Servo.class, RobotIDS.TRANSITION_SERVO_MOTOR);
+           // transition.setPosition(0.0);
+           // angler = hardwareMap.get(Servo.class, RobotIDS.ANGLE_SERVO_MOTOR);
+           // angler.setPosition(0.0);
+        //}
+
+
+
+
 }
 }
