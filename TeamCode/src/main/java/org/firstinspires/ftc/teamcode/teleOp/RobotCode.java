@@ -40,6 +40,8 @@ public class RobotCode extends OpMode {
         launch();
         lift();
         telemetry();
+        transition();
+        angleShooter();
     }
     public void telemetry()
     {
@@ -116,14 +118,76 @@ public class RobotCode extends OpMode {
 
     public void intake(){
         //intake will go here
+        if(gamepad2.left_trigger > 0.1)
+        {
+            hardware.intake.setPower(1.0);
+        }
+        else
+        {
+            hardware.intake.setPower(0.0);
+        }
     }
 
     public void launch(){
         //the things you need to do for launch will go here
+        if(gamepad2.right_trigger >  0.1)
+        {
+            hardware.launcher.setPower(1.0);
+        }
+        else
+        {
+            hardware.launcher.setPower(0.0);
+        }
 
     }
 
     public void lift(){
        //climber code will go here
+        if(gamepad2.triangle)
+        {
+            hardware.climber.setPower(0.4);
+        }
+        else
+        {
+            hardware.climber.setPower(0.0);
+        }
+    }
+   // public void transition(){
+       // if(gamepad2.dpad_right)
+        {
+           // hardware.transition.setPosition(1.0);
+        }
+       // else
+        //{
+           // hardware.transition.setPosition(0.0);
+        }
+       // if(gamepad2.dpad_left)
+        //{
+           // hardware.transition.setPosition(-1.0);
+        }
+       // else
+        //{
+           // hardware.transition.setPosition(0.0);
+        }
+
+    }
+    //public void angleShooter()
+   // {
+      //  if(gamepad2.triangle)
+       // {
+        //    hardware.angler.setPosition(0.3);
+        }
+        //if (gamepad2.square)
+        //{
+          //  hardware.angler.setPosition(0.6);
+        }
+        //if (gamepad2.circle)
+        //{
+          //  hardware.angler.setPosition(1.0);
+        }
+        //if (gamepad2.left_bumper)
+       // {
+          //  hardware.angler.setPosition(0.0);
+        }
     }
 }
