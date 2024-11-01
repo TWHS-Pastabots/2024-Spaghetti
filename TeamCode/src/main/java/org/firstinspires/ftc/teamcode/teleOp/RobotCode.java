@@ -40,8 +40,8 @@ public class RobotCode extends OpMode {
         launch();
         lift();
         telemetry();
-        transition();
-        angleShooter();
+        //transition();
+        //angleShooter();
     }
     public void telemetry()
     {
@@ -141,53 +141,53 @@ public class RobotCode extends OpMode {
 
     }
 
-    public void lift(){
-       //climber code will go here
-        if(gamepad2.triangle)
-        {
-            hardware.climber.setPower(0.4);
+    public void lift() {
+        //climber code will go here
+        if (gamepad1.dpad_down) {
+            hardware.climber.setPower(0.1);
+        } else if (gamepad1.dpad_up) {
+            hardware.climber.setPower(-0.1);
         }
-        else
-        {
+        else {
             hardware.climber.setPower(0.0);
         }
     }
-   // public void transition(){
-       // if(gamepad2.dpad_right)
-        {
-           // hardware.transition.setPosition(1.0);
-        }
-       // else
-        //{
-           // hardware.transition.setPosition(0.0);
-        }
-       // if(gamepad2.dpad_left)
-        //{
-           // hardware.transition.setPosition(-1.0);
-        //}
-       // else
-        //{
-           // hardware.transition.setPosition(0.0);
-        }
+//     public void transition(){
+//        if(gamepad2.dpad_right)
+//        {
+//            hardware.transition.setPosition(1.0);
+//        }
+//        else
+//        {
+//            hardware.transition.setPosition(0.0);
+//        }
+//        if(gamepad2.dpad_left)
+//        {
+//            hardware.transition.setPosition(-1.0);
+//        }
+//        else
+//        {
+//            hardware.transition.setPosition(0.0);
+//        }
 
-    }
-    //public void angleShooter()
-   // {
-      //  if(gamepad2.triangle)
-       // {
-        //    hardware.angler.setPosition(0.3);
-        }
-        //if (gamepad2.square)
-        //{
-          //  hardware.angler.setPosition(0.6);
-        }
-        //if (gamepad2.circle)
-        //{
-          //  hardware.angler.setPosition(1.0);
-        }
-        //if (gamepad2.left_bumper)
-       // {
-          //  hardware.angler.setPosition(0.0);
-        }
-    }
+ //   }
+//    public void angleShooter()
+//    {
+//        if(gamepad2.triangle)
+//        {
+//            hardware.angler.setPosition(0.3);
+//        }
+//        if (gamepad2.square)
+//        {
+//            hardware.angler.setPosition(0.6);
+//        }
+//        if (gamepad2.circle)
+//        {
+//            hardware.angler.setPosition(1.0);
+//        }
+//        if (gamepad2.left_bumper)
+//        {
+//            hardware.angler.setPosition(0.0);
+//        }
+//    }
 }

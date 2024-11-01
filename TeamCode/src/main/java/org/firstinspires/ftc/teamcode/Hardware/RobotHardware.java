@@ -16,8 +16,8 @@ public class RobotHardware {
     public DcMotorEx intake = null;
     public DcMotorEx launcher = null;
     public DcMotorEx climber = null;
-    public Servo transition = null;
-    public Servo angler = null;
+    //public Servo transition = null;
+    //public Servo angler = null;
 
 
 
@@ -31,7 +31,7 @@ public class RobotHardware {
         initializeIntakeMotors(hardwareMap);
         initializeOutTakeMotors(hardwareMap);
         initializeClimberMotor(hardwareMap);
-        initializeServos(hardwareMap);
+        //initializeServos(hardwareMap);
     }
 
 public void initializeDriveMotors(HardwareMap hardwareMap){
@@ -82,13 +82,13 @@ public void initializeClimberMotor(HardwareMap hardwareMap)
 
 }
 
-public void initializeServos(HardwareMap hardwareMap){
+//public void initializeServos(HardwareMap hardwareMap){
     //this is where all of your servos will go eventually
-    transition = hardwareMap.get(Servo.class, RobotIDS.TRANSITION_SERVO_MOTOR);
-    transition.setPosition(0.0);
+    //transition = hardwareMap.get(Servo.class, RobotIDS.TRANSITION_SERVO_MOTOR);
+   // transition.setPosition(0.0);
 
-    angler = hardwareMap.get(Servo.class, RobotIDS.ANGLE_SERVO_MOTOR);
-    angler.setPosition(0.0);
+    //angler = hardwareMap.get(Servo.class, RobotIDS.ANGLE_SERVO_MOTOR);
+    //angler.setPosition(0.0);
 
-}
+//}
 }
