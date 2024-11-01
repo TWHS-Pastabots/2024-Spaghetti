@@ -164,7 +164,7 @@ public class RobotCode extends OpMode {
        // if(gamepad2.dpad_left)
         //{
            // hardware.transition.setPosition(-1.0);
-        }
+        //}
        // else
         //{
            // hardware.transition.setPosition(0.0);
