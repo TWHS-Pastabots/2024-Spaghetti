@@ -188,7 +188,7 @@ public class RobotCode extends OpMode {
         {
             hardware.angler.setPosition(0.4);
         }
-        if (gamepad2.circle)..aaa xc 
+        if (gamepad2.circle)
         {
             hardware.angler.setPosition(0.5);
         }
