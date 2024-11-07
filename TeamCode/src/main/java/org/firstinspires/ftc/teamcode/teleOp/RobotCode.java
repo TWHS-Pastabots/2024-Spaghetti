@@ -133,7 +133,7 @@ public class RobotCode extends OpMode {
         //the things you need to do for launch will go here
         if(gamepad2.right_trigger >  0.1)
         {
-            hardware.launcher.setPower(1.0);
+            hardware.launcher.setPower(0.7);
         }
         else
         {
@@ -186,11 +186,15 @@ public class RobotCode extends OpMode {
         }
         if (gamepad2.square)
         {
-            hardware.angler.setPosition(0.4);
+            hardware.angler.setPosition(0.1)84 ;
         }
-        if (gamepad2.circle)..aaa xc 
+        if (gamepad2.circle)
         {
-            hardware.angler.setPosition(0.5);
+            hardware.angler.setPosition(0.0);
+        }
+        if (gamepad2.cross)
+        {
+            hardware.angler.setPosition(-0.1);
         }
 
     }
