@@ -164,10 +164,10 @@ public class RobotCode extends OpMode {
         {
             hardware.transition.setPosition(1.0);
         }
-       // else
-       // {
-           // hardware.transition.setPosition(0.0);
-       // }
+        else
+        {
+            hardware.transition.setPosition(0.0);
+        }
          if(gamepad2.dpad_left)
         {
             hardware.transition.setPosition(-1.0);
@@ -186,15 +186,23 @@ public class RobotCode extends OpMode {
         }
         if (gamepad2.square)
         {
+<<<<<<< HEAD
             hardware.angler.setPosition(0.1) ;
         }
         if (gamepad2.circle)
         {
             hardware.angler.setPosition(0.0);
+=======
+            hardware.angler.setPosition(0.4) ;
+>>>>>>> 49f26c9def56df79628db7565817cb6b00f6cc9c
         }
         if (gamepad2.cross)
         {
-            hardware.angler.setPosition(-0.1);
+            hardware.angler.setPosition(0.6);
+        }
+        else
+        {
+            hardware.angler.setPosition(0.7);
         }
 
     }
