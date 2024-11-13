@@ -6,6 +6,7 @@ import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
+import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 @TeleOp (name = "Spaghetti")
@@ -40,6 +41,8 @@ public class RobotCode extends OpMode {
         launch();
         lift();
         telemetry();
+        transition();
+        angleShooter();
     }
     public void telemetry()
     {
@@ -115,11 +118,17 @@ public class RobotCode extends OpMode {
     }
 
     public void intake(){
-        //intake will go here
+//        //intake will go here
+//<<<<<<< HEAD
         if(gamepad2.left_trigger > 0.0){
             hardware.intake.setPower(1.0);
 
 
+//=======
+        if(gamepad2.left_trigger > 0.1)
+        {
+            hardware.intake.setPower(1.0);
+//>>>>>>> 4088197cbab3df09b19d2b31d632bb340356858a
         }
         else
         {
@@ -129,9 +138,15 @@ public class RobotCode extends OpMode {
 
     public void launch(){
         //the things you need to do for launch will go here
+//<<<<<<< HEAD
         if(gamepad2.right_trigger > 0.0)
         {
             hardware.launcher.setPower(1.0);
+//=======
+        if(gamepad2.right_trigger >  0.1)
+        {
+            hardware.launcher.setPower(0.7);
+//>>>>>>> 4088197cbab3df09b19d2b31d632bb340356858a
         }
         else
         {
@@ -140,6 +155,7 @@ public class RobotCode extends OpMode {
 
     }
 
+//<<<<<<< HEAD
     public void lift(){
        //climber code will go here
         if(gamepad2.square && buttonTime.time() >= 500)
@@ -155,5 +171,70 @@ public class RobotCode extends OpMode {
         if(gamepad2.right_bumper){
             //angler.angleshooter
         }
+//=======
+    public void lift() {
+        //climber code will go here
+        if (gamepad2.left_bumper) {
+            hardware.climber.setPower(0.8);
+        }
+        else
+        {
+            hardware.climber.setPower(0.0);
+        }
+        if (gamepad2.right_bumper) {
+            hardware.climber.setPower(-0.8);
+            telemetry.addData("Pressed", "pressed");
+        }
+       else {
+            hardware.climber.setPower(0.0);
+        }
+    }
+     public void transition(){
+        if(gamepad2.dpad_right)
+        {
+            hardware.transition.setPosition(1.0);
+        }
+        else
+        {
+            hardware.transition.setPosition(0.0);
+        }
+         if(gamepad2.dpad_left)
+        {
+            hardware.transition.setPosition(-1.0);
+        }
+        //else
+        //{
+          //  hardware.transition.setPosition(0.0);
+        //}
+
+    }
+    public void angleShooter()
+    {
+        if(gamepad2.triangle)
+        {
+            hardware.angler.setPosition(0.2);
+        }
+        if (gamepad2.square)
+        {
+//<<<<<<< HEAD
+            hardware.angler.setPosition(0.1) ;
+        }
+        if (gamepad2.circle)
+        {
+            hardware.angler.setPosition(0.0);
+//=======
+            hardware.angler.setPosition(0.4) ;
+//>>>>>>> //49f26c9def56df79628db7565817cb6b00f6cc9c
+        }
+        if (gamepad2.cross)
+        {
+            hardware.angler.setPosition(0.6);
+        }
+        else
+        {
+            hardware.angler.setPosition(0.7);
+        }
+
+//>>>>>>> 4088197cbab3df09b19d2b31d632bb340356858a
     }
 }
