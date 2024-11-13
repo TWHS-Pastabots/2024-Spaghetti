@@ -13,11 +13,7 @@ public class RobotIDS {
     public static final String ANGLE_SERVO_MOTOR = "angler";
     public static final String TRANSITION_SERVO_MOTOR = "transition";
 //=======
-    public static final String LAUNCHER_MOTOR = "launcher";
-    public static final String INTAKE_MOTOR = "intake";
-    public static final String CLIMB_MOTOR = "climber";
-    public static final String TRANSITION_SERVO_MOTOR = "transition";
-    public static final String ANGLE_SERVO_MOTOR = "angler";
+
 
 //>>>>>>> 4088197cbab3df09b19d2b31d632bb340356858a
 }
