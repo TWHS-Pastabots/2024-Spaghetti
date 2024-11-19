@@ -8,6 +8,10 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
+import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
+import org.firstinspires.ftc.robotcore.external.navigation.AxesOrder;
+import org.firstinspires.ftc.robotcore.external.navigation.AxesReference;
+import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
 
 @TeleOp (name = "Spaghetti")
 public class RobotCode extends OpMode {
@@ -20,6 +24,12 @@ public class RobotCode extends OpMode {
     public static final double SLOW_MODE = .45;
     double currentMode;
     ElapsedTime buttonTime = null;
+
+    public boolean fieldOriented;
+
+    Orientation angles = new Orientation();
+    double initYaw;
+    double adjustedYaw;
 
     public void init(){
         hardware = new RobotHardware();
@@ -55,10 +65,49 @@ public class RobotCode extends OpMode {
         double x = gamepad1.left_stick_x; // Counteract imperfect strafing
         double z = gamepad1.right_stick_x;
 
-        double leftFrontPower = y + x + z;
-        double leftRearPower = y - x + z;
-        double rightFrontPower = y - x - z;
-        double rightRearPower = y + x - z;
+        if (gamepad1.share) {
+            fieldOriented = true;
+        } else if (gamepad1.options) {
+            fieldOriented = false;
+        }
+
+        double leftFrontPower;
+        double leftRearPower;
+        double rightFrontPower;
+        double rightRearPower;
+
+        if(fieldOriented){
+            angles = hardware.imu.getAngularOrientation(AxesReference.INTRINSIC, AxesOrder.ZYX, AngleUnit.DEGREES);
+
+            adjustedYaw = angles.firstAngle-initYaw;
+
+            double zerodYaw = -initYaw+angles.firstAngle;
+
+            double theta = Math.atan2(y, x) * 180/Math.PI; // aka angle
+
+            double realTheta;
+
+            realTheta = (360 - zerodYaw) + theta;
+
+            double power = Math.hypot(x, y);
+
+            double sin = Math.sin((realTheta * (Math.PI / 180)) - (Math.PI / 4));
+            double cos = Math.cos((realTheta * (Math.PI / 180)) - (Math.PI / 4));
+            double maxSinCos = Math.max(Math.abs(sin), Math.abs(cos));
+
+            leftFrontPower = (power * cos / maxSinCos + z);
+            rightFrontPower = (power * sin / maxSinCos - z);
+            leftRearPower = (power * sin / maxSinCos + z);
+            rightRearPower = (power * cos / maxSinCos - z);
+        }
+        else
+        {
+            leftFrontPower = y + x + z;
+            leftRearPower = y - x + z;
+            rightFrontPower = y - x - z;
+            rightRearPower = y + x - z;
+
+        }
 
         if (Math.abs(leftFrontPower) > 1 || Math.abs(leftRearPower) > 1 ||
                 Math.abs(rightFrontPower) > 1 || Math.abs(rightRearPower) > 1 ){

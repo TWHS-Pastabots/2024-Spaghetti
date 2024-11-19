@@ -6,6 +6,7 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.hardware.ServoController;
+import com.qualcomm.hardware.bosch.BNO055IMU;
 
 import org.firstinspires.ftc.robotcore.internal.system.Assert;
 
@@ -19,6 +20,8 @@ public class RobotHardware {
     public DcMotorEx climber = null;
     public Servo transition = null;
     public Servo angler = null;
+
+    public BNO055IMU imu;
 
 
 
@@ -58,6 +61,14 @@ public void initializeDriveMotors(HardwareMap hardwareMap){
         motor.setZeroPowerBehavior(DcMotorEx.ZeroPowerBehavior.BRAKE);
         motor.setMode(DcMotorEx.RunMode.RUN_WITHOUT_ENCODER);
     }
+    // Set up IMU
+    imu = hardwareMap.get(BNO055IMU.class, RobotIDS.IMU);
+    BNO055IMU.Parameters parameters = new BNO055IMU.Parameters();
+    parameters.angleUnit = BNO055IMU.AngleUnit.DEGREES;
+    parameters.mode = BNO055IMU.SensorMode.IMU;
+    parameters.accelUnit = BNO055IMU.AccelUnit.METERS_PERSEC_PERSEC;
+    parameters.loggingEnabled = false;
+    imu.initialize(parameters);
 }
 
 public void initializeIntakeMotors(HardwareMap hardwareMap){
