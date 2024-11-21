@@ -145,14 +145,14 @@ public class RobotCode extends OpMode {
     public void lift() {
         //climber code will go here
         if (gamepad2.left_bumper) {
-            hardware.climber.setPower(0.8);
+            hardware.climber.setPower(1.0);
         }
         else
         {
             hardware.climber.setPower(0.0);
         }
         if (gamepad2.right_bumper) {
-            hardware.climber.setPower(-0.8);
+            hardware.climber.setPower(-1.0);
             telemetry.addData("Pressed", "pressed");
         }
        else {
@@ -179,15 +179,15 @@ public class RobotCode extends OpMode {
     {
         if(gamepad2.triangle)
         {
-            hardware.angler.setPosition(0.2);
+            hardware.angler.setPosition(0.3);
         }
         else if (gamepad2.square)
         {
-            hardware.angler.setPosition(0.1) ;
+            hardware.angler.setPosition(0.4) ;
         }
         else if (gamepad2.circle)
         {
-            hardware.angler.setPosition(0.4) ;
+            hardware.angler.setPosition(0.5) ;
 
         }
         else if (gamepad2.cross)
