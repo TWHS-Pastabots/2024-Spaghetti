@@ -15,10 +15,10 @@ public class blueSequences {
     RobotCode intakeLauncher;
     Utilities utility;
 
-    Trajectory strafeStart, initialForward;
-    Trajectory align1A, align1B, align2, align3;
-    Trajectory park1A, park1B, park2A, park2B, park3A, park3B;
-    Trajectory toGoal;
+    TrajectorySequence startToOne, startToTwo, startToThree;
+    TrajectorySequence align1A, align1B, align2, align3;
+    TrajectorySequence park1A, park1B, park2A, park2B, park3A, park3B;
+    TrajectorySequence toGoal;
 
     Pose2d startPose = new Pose2d(54,54,Math.toRadians(180));
 
@@ -26,13 +26,52 @@ public class blueSequences {
     {
         hardware = new RobotHardware();
         hardware.init(hardwareMap);
-        //intakeLauncher = new RobotCode(hardwareMap);
         this.utility = utility;
         drive = new SampleMecanumDrive(hardwareMap);
         drive.setPoseEstimate(startPose);
-        toGoal = drive.trajectorySequenceBuilder(startPose)
-                .strafe
+
+        startToOne = drive.trajectorySequenceBuilder(startPose)
+                .strafeLeft(36)
+                .forward(36)
+                .turn(Math.toRadians(90)).build();
+
+        startToTwo = drive.trajectorySequenceBuilder(startToOne.end())
+                .strafeLeft(55)
+                .forward(36)
+                .turn(Math.toRadians(90))
+                .build();
+        startToThree = drive.trajectorySequenceBuilder(startToTwo.end())
+                .strafeLeft(74)
+                .forward(36)
+                .turn(Math.toRadians(90))
+                .build();
+
+
+    }
+    public void blue1()
+    {
+        drive.followTrajectorySequence(startToOne);
+        hardware.launcher.setPower(1.0);
+        hardware.intake.setPower(1.0);
+        hardware.intake.setPower(0.0);
+        hardware.launcher.setPower(0.0);
     }
 
-    TrajectorySequence trajectory = drive.trajectorySequenceBuilder(startPose)
+    public void blue2()
+    {
+        drive.followTrajectorySequence(startToTwo);
+        hardware.launcher.setPower(1.0);
+        hardware.intake.setPower(1.0);
+        hardware.intake.setPower(0.0);
+        hardware.launcher.setPower(0.0);
+    }
+    public void blue3()
+    {
+        hardware.launcher.setPower(1.0);
+        hardware.intake.setPower(1.0);
+        hardware.intake.setPower(0.0);
+        hardware.launcher.setPower(0.0);
+    }
+
+
 }
