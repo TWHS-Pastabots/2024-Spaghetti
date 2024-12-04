@@ -95,9 +95,9 @@ public void initializeClimberMotor(HardwareMap hardwareMap)
 }
 
 public void initializeServos(HardwareMap hardwareMap){
-    //this is where all of your servos will go eventually
-    transition = hardwareMap.get(Servo.class, RobotIDS.TRANSITION_SERVO_MOTOR);
-    transition.setPosition(0.0);
+//    //this is where all of your servos will go eventually
+//    transition = hardwareMap.get(Servo.class, RobotIDS.TRANSITION_SERVO_MOTOR);
+//    transition.setPosition(0.0);
 
     angler = hardwareMap.get(Servo.class, RobotIDS.ANGLE_SERVO_MOTOR);
     angler.setPosition(0.0);

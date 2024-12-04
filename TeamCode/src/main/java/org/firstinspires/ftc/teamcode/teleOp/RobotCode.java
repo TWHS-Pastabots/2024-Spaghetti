@@ -51,7 +51,7 @@ public class RobotCode extends OpMode {
         launch();
         lift();
         telemetry();
-        transition();
+       // transition();
         angleShooter();
     }
     public void telemetry()
@@ -196,31 +196,27 @@ public class RobotCode extends OpMode {
         if (gamepad2.left_bumper) {
             hardware.climber.setPower(1.0);
         }
-        else
-        {
-            hardware.climber.setPower(0.0);
-        }
-        if (gamepad2.right_bumper) {
+        else if (gamepad2.right_bumper) {
             hardware.climber.setPower(-1.0);
             telemetry.addData("Pressed", "pressed");
         }
        else {
             hardware.climber.setPower(0.0);
         }
-    }
-     public void transition(){
-        if(gamepad2.dpad_right)
-        {
-            hardware.transition.setPosition(1.0);
-        }
-        else
-        {
-            hardware.transition.setPosition(0.0);
-        }
-         if(gamepad2.dpad_left)
-        {
-            hardware.transition.setPosition(-1.0);
-        }
+//    }
+//     public void transition(){
+//        if(gamepad2.dpad_right)
+//        {
+//            hardware.transition.setPosition(1.0);
+//        }
+//        else
+//        {
+//            hardware.transition.setPosition(0.0);
+//        }
+//         if(gamepad2.dpad_left)
+//        {
+//            hardware.transition.setPosition(-1.0);
+//        }
 
 
     }
