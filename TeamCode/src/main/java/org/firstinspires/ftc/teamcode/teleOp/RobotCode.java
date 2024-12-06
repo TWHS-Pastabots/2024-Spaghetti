@@ -239,10 +239,6 @@ public class RobotCode extends OpMode {
         {
             hardware.angler.setPosition(0.6);
         }
-        else
-        {
-            hardware.angler.setPosition(0.7);
-        }
 
     }
 }
