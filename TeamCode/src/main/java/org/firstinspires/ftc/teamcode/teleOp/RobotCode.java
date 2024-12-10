@@ -172,6 +172,10 @@ public class RobotCode extends OpMode {
         {
             hardware.intake.setPower(1.0);
         }
+        else if(gamepad2.dpad_right)
+        {
+            hardware.intake.setPower(-0.5);
+        }
         else
         {
             hardware.intake.setPower(0.0);
@@ -222,27 +226,18 @@ public class RobotCode extends OpMode {
     }
     public void angleShooter()
     {
-        if(gamepad2.triangle)
+        if (gamepad2.square)
         {
-            hardware.angler.setPosition(0.3);
-        }
-        else if (gamepad2.square)
-        {
-            hardware.angler.setPosition(0.4) ;
+            hardware.angler.setPosition(0.45) ;
         }
         else if (gamepad2.circle)
         {
-            hardware.angler.setPosition(0.5) ;
+            hardware.angler.setPosition(0.54) ;
 
         }
         else if (gamepad2.cross)
         {
-            hardware.angler.setPosition(0.6);
+            hardware.angler.setPosition(0.66);
         }
-        else
-        {
-            hardware.angler.setPosition(0.7);
-        }
-
     }
 }
