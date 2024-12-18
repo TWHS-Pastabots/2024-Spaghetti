@@ -102,7 +102,7 @@ public class RobotCode extends OpMode {
         }
         else
         {
-            leftFrontPower = y + x + z;
+           leftFrontPower = y + x + z;
             leftRearPower = y - x + z;
             rightFrontPower = y - x - z;
             rightRearPower = y + x - z;
